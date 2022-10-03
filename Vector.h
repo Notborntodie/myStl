@@ -13,7 +13,7 @@ public:
 
 template<typename T>
 Vector<T>::Vector(/* args */)
-{template
+{
 
 
 }
