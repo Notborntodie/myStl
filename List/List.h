@@ -25,10 +25,14 @@ public:
     T removeLast();
     void reverse();
     void uniquify(); // uniquify  a sorted list
+    void traverse(void (*visit)(T & e));
     void print();
     void combine(List<T> &l1,List<T> &l2);
     void reverseCombine(List<T> &l1,List<T> &l2);
     int  sortedRemoveRange(T min,T max);
+    T listMax();
+
+
 
 };
 
@@ -127,7 +131,6 @@ T List<T>::remove(ListNodeP<T> p){
     p->pred->succ=p->succ;
     p->succ->pred=p->pred;
     _size--;
-    //printf("it is me %d\n",val);
     delete p;
     return val;    
 }
@@ -236,5 +239,30 @@ int List<T>::sortedRemoveRange(T min,T max){
 
 
 
+template <typename T>
+T List<T>::listMax(){
+    T max=header->succ->data;
+    for (ListNodeP<T> p =header->succ ;p !=trailer; p=p->succ)
+    {
+        max=std::max(max,p->data);
+    }
+    return max;    
+}
+
+
+
+template <typename T>
+void List<T>::traverse(void (*visit)(T & e)){
+    for (ListNodeP<T> p =header->succ ;p !=trailer; p=p->succ)
+    {
+        visit(p->data);
+    }
+}
+
+
+template <typename T>
+struct Increase{
+    virtual T operator()(T &e){e++;}
+};
 
 

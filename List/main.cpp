@@ -10,6 +10,10 @@ void init(List<int> &L1,List<int> &L2){
     }
 }
 
+template <typename T>
+struct listMax{
+    virtual T operator()(T &e){}
+};
 
 int main(){
     List<int> L1,L2,L3,L4,L5;
@@ -27,6 +31,10 @@ int main(){
     init(L1,L2);
     L3.reverseCombine(L1,L2);
     L3.print();
+
+    //hwtest3
+    printf("hwtest3\n");
+    printf("%d\n",L3.listMax());
 
 
 
